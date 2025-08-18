@@ -3,6 +3,21 @@ export module SNC {
     release: string;
     api: string;
     type: string;
+    useHTML?: boolean; // New flag for HTML parsing mode
+  }
+
+  interface HTMLParseOpts {
+    baseURL: string;
+    selector: {
+      navigation: string;
+      methodGroup: string;
+      paramTable: string;
+      returnTable: string;
+    };
+    cacheEnabled?: boolean;
+    cacheTTL?: number;
+    retryAttempts?: number;
+    rateLimitMs?: number;
   }
 
   interface NSOpts extends HierarchyOpts {
@@ -29,9 +44,7 @@ export module SNC {
     navbar: ClientNavBar;
   }
 
-  interface ClientNavBar {
-    [key: string]: string | ClassData[];
-  }
+  type ClientNavBar = Record<string, string | ClassData[]>;
 
   interface ClientDocs extends DocsBase {
     navbar: ClientNavBar;
@@ -116,17 +129,13 @@ export module SNC {
     items: BaseNode[];
   }
 
-  export interface SNApiHierarchy {
-    [namespace: string]: SNApiNamespace;
-  }
+  export type SNApiHierarchy = Record<string, SNApiNamespace>;
 
   export interface SNApiNamespace {
     classes: SNClass[];
   }
 
-  export interface SNMethodMap {
-    [name: string]: SNClassMethod;
-  }
+  export type SNMethodMap = Record<string, SNClassMethod>;
 
   interface SNClassDependency {
     name: string;

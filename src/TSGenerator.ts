@@ -176,14 +176,22 @@ function ensurePathExists(ensurePath: string) {
 }
 
 async function writePrettyFile(pth: string, text: string) {
-  let config: prettier.Options = {
-    filepath: pth
-  };
-  let prettierConfig = await prettier.resolveConfig(process.cwd());
-  if (prettierConfig) {
-    config = Object.assign(config, prettierConfig);
+  try {
+    let config: prettier.Options = {
+      filepath: pth,
+      parser: 'typescript'
+    };
+    let prettierConfig = await prettier.resolveConfig(process.cwd());
+    if (prettierConfig) {
+      config = Object.assign(config, prettierConfig);
+    }
+    const formatted = prettier.format(text, config);
+    await fs.writeFile(pth, formatted);
+  } catch (error) {
+    // If prettier fails, write the unformatted file
+    console.warn(`Prettier formatting failed for ${pth}, writing unformatted`);
+    await fs.writeFile(pth, text);
   }
-  await fs.writeFile(pth, prettier.format(text, config));
 }
 
 function getPrefixedClassName(opts: TSG.GenClassNameOpts) {
