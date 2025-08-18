@@ -33,4 +33,9 @@ type QueryOperator =
   | 'DOES NOT CONTAIN'
   | 'INSTANCEOF';
 
-export { ReferenceGlideElement, TypedRESTAPIRequest, FieldType, QueryOperator };
+/**
+ * Operations that can be performed on a GlideRecord
+ */
+type GlideRecordOperation = 'insert' | 'update' | 'delete';
+
+export { ReferenceGlideElement, TypedRESTAPIRequest, FieldType, QueryOperator, GlideRecordOperation };

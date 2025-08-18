@@ -1,3 +1,4 @@
+import { GlideSystem } from './GlideSystem';
 import * as global from './global';
 import * as sn_auth from './sn_auth';
 import * as sn_cc from './sn_cc';
@@ -16,10 +17,9 @@ import * as sn_notify from './sn_notify';
 import * as sn_sc from './sn_sc';
 import * as sn_uc from './sn_uc';
 import * as sn_ws from './sn_ws';
-import { GlideSystem } from './GlideSystem';
 declare var gs: GlideSystem;
-export { gs };
 export { CertificateEncryption } from './CertificateEncryption';
+export { GlideAction } from './GlideAction';
 export { GlideAggregate } from './GlideAggregate';
 export { GlideDate } from './GlideDate';
 export { GlideDateTime } from './GlideDateTime';
@@ -42,7 +42,6 @@ export { GlideSchedule } from './GlideSchedule';
 export { GlideScopedEvaluator } from './GlideScopedEvaluator';
 export { GlideScriptableInputStream } from './GlideScriptableInputStream';
 export { GlideScriptedExtensionPoint } from './GlideScriptedExtensionPoint';
-export { GlideAction } from './GlideAction';
 export { GlideScriptedProcessor } from './GlideScriptedProcessor';
 export { GlideSecureRandomUtil } from './GlideSecureRandomUtil';
 export { GlideSecurityUtils } from './GlideSecurityUtils';
@@ -65,6 +64,10 @@ export { JSON } from './JSON';
 export { PAScorecard } from './PAScorecard';
 export { PASnapshot } from './PASnapshot';
 export { RenderProperties } from './RenderProperties';
+export { ScopedElementDescriptor } from './ScopedElementDescriptor';
+export { ScopedGlideElement } from './ScopedGlideElement';
+export { ScopedGlideRecord } from './ScopedGlideRecord';
+export { ScopedQueryCondition } from './ScopedQueryCondition';
 export { SPScriptedFacet } from './SPScriptedFacet';
 export { SPScriptedFacetService } from './SPScriptedFacetService';
 export { TemplatePrinter } from './TemplatePrinter';
@@ -72,23 +75,26 @@ export { Workflow } from './Workflow';
 export { XMLDocument2 } from './XMLDocument2';
 export { XMLNode } from './XMLNode';
 export { XMLNodeIterator } from './XMLNodeIterator';
-export { sn_auth };
-export { sn_cc };
-export { sn_clotho };
-export { sn_cmdb };
-export { sn_cmdbgroup };
-export { sn_connect };
-export { sn_discovery };
-export { sn_fd };
-export { sn_hw };
-export { sn_impex };
-export { sn_interaction };
-export { sn_nlp_sentiment };
-export { sn_notification };
-export { sn_notify };
-export { sn_sc };
-export { sn_uc };
-export { sn_ws };
+export {
+  gs,
+  sn_auth,
+  sn_cc,
+  sn_clotho,
+  sn_cmdb,
+  sn_cmdbgroup,
+  sn_connect,
+  sn_discovery,
+  sn_fd,
+  sn_hw,
+  sn_impex,
+  sn_interaction,
+  sn_nlp_sentiment,
+  sn_notification,
+  sn_notify,
+  sn_sc,
+  sn_uc,
+  sn_ws,
+};
 
 // Manually updated scopes
 export { global };

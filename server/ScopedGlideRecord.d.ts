@@ -1,8 +1,24 @@
 import { FieldType, QueryOperator } from '../util';
+import { GlideDateTime } from './GlideDateTime';
 import { GlideElement } from './GlideElement';
 import { GlideQueryCondition } from './GlideQueryCondition';
+import { ScopedGlideElement } from './ScopedGlideElement';
 import { SNAPIGlideRecord } from './SNAPIGlideRecord';
-declare class GlideRecordBase<T> extends SNAPIGlideRecord {
+
+/**
+ * Scoped GlideRecord is used for database operations.
+ * This interface provides compatibility with ServiceNow London's ScopedGlideRecord
+ * while maintaining integration with the @tenonhq/servicenow-types generic system.
+ */
+declare class ScopedGlideRecordBase<T> extends SNAPIGlideRecord {
+  readonly sys_created_by: string & ScopedGlideElement;
+  readonly sys_created_on: GlideDateTime & ScopedGlideElement;
+  readonly sys_id: string & ScopedGlideElement;
+  readonly sys_mod_count: number & ScopedGlideElement;
+  readonly sys_updated_by: string & ScopedGlideElement;
+  readonly sys_updated_on: GlideDateTime & ScopedGlideElement;
+  variables: { [name: string]: any };
+  [fieldName: string]: any;
   /**
    * Adds a filter to return active records.
    */
@@ -106,9 +122,12 @@ declare class GlideRecordBase<T> extends SNAPIGlideRecord {
    */
   _query(): void;
   _query(name: any, value: any): void;
-}
 
-type GlideRecordConstructor = { new <T>(table: string): GlideRecord<T> };
-type GlideRecord<T> = GlideRecordBase<T> & T;
-declare const GlideRecord: GlideRecordConstructor;
-export { GlideRecord };
+  isEncodedQueryValid: (encodedQuery: string) => boolean;
+}
+type ScopedGlideRecordConstructor = {
+  new <T>(table: string): ScopedGlideRecordBase<T>;
+};
+type ScopedGlideRecord<T> = ScopedGlideRecordBase<T> & T;
+declare const ScopedGlideRecord: ScopedGlideRecordConstructor;
+export { ScopedGlideRecord };
