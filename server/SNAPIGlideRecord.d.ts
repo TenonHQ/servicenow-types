@@ -1,6 +1,6 @@
-import { GlideQueryCondition } from './GlideQueryCondition';
-import { GlideElementDescriptor } from './GlideElementDescriptor';
 import { GlideElement } from './GlideElement';
+import { GlideElementDescriptor } from './GlideElementDescriptor';
+import { GlideQueryCondition } from './GlideQueryCondition';
 declare class SNAPIGlideRecord {
   /**
    * Adds a filter to return active records.
@@ -228,7 +228,7 @@ declare class SNAPIGlideRecord {
    * Verifies whether the specified encoded query is valid.
    * @param query Encoded query to validate.
    */
-  isEncodedQueryValid(query: string): boolean;
+  //   isEncodedQueryValid(query: string): boolean;
   /**
    * Checks if the current record is a new record that has not yet been inserted into the
    * database.

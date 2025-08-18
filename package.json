@@ -1,21 +1,24 @@
 {
-  "name": "@nuvolo/servicenow-types",
-  "version": "0.2.0",
+  "name": "@tenonhq/servicenow-types",
+  "version": "0.0.28",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postpublish": "npm publish --ignore-scripts --public --@nuvolo:registry='https://registry.npmjs.org'"
+    "postpublish": "node ../Sincronia/Scripts/bump-version.js ./package.json",
+    "latest:sn": "npm publish & cd ../ServiceNow && npm i @tenonhq/servicenow-types@latest && cd ../ServiceNowTypes",
+    "build": "npx tsc && node dist/index.js"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
+    "@types/cheerio": "^0.22.35",
     "@types/dotenv": "^6.1.1",
     "@types/node": "^12.7.4",
     "@types/prettier": "^1.18.2",
     "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.12",
     "dotenv": "^8.1.0",
+    "playwright": "^1.20.0",
     "prettier": "^1.18.2",
     "striptags": "^3.1.1",
     "typescript": "^3.6.2"

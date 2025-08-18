@@ -106,6 +106,12 @@ declare class GlideRecordBase<T> extends SNAPIGlideRecord {
    */
   _query(): void;
   _query(name: any, value: any): void;
+
+  /**
+   * Verifies whether the specified encoded query is valid.
+   * @param encodedQuery Encoded query to validate.
+   */
+  //   isEncodedQueryValid: (encodedQuery: string) => boolean;
 }
 
 type GlideRecordConstructor = { new <T>(table: string): GlideRecord<T> };
